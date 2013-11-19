@@ -12,7 +12,22 @@
 		<!-- Plugin的属性定义 -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.6</jdk.version>	
+		
+		<jdbc.driver.groupId>mysql</jdbc.driver.groupId>
+		<jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
+		<jdbc.driver.version>5.1.25</jdbc.driver.version>
 	</properties>
+	<dependencyManagement>
+		<dependencies>
+		<!-- jdbc driver -->
+		<dependency>
+			<groupId>${jdbc.driver.groupId}</groupId>
+			<artifactId>${jdbc.driver.artifactId}</artifactId>
+			<version>${jdbc.driver.version}</version>
+			<scope>test</scope>
+		</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -40,5 +55,6 @@
 	<modules>
 		<module>cas-shiros-app</module>
 		<module>cas-shiros-server</module>
+		<module>cas-shiros-db</module>
 	</modules>
 </project>

@@ -1,0 +1,2 @@
+insert into user (id, login_name, name, password, roles, register_date) values(1,'admin','Zeng Aihui','21232F297A57A5A743894A0E4A801FC3','admin','2013-11-11 01:00:00');
+insert into user (id, login_name, name, password, roles, register_date) values(2,'user','Jdonee','EE11CBB19052E40B07AAC0CA060C23EE','user','2013-11-11 02:00:00');

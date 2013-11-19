@@ -1,0 +1,149 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+        <groupId>org.jdonee</groupId>
+        <artifactId>cas-shiros</artifactId>
+        <version>1.0.0</version>
+    </parent>
+	<artifactId>cas-shiros-db</artifactId>
+	<packaging>jar</packaging>
+	<name>CAS Shiro Database Scripts</name>
+	<description>CAS Shiro Database Scripts</description>
+	<properties>
+		<sql.type>mysql</sql.type>
+		<jdbc.database.name>casdemo</jdbc.database.name>
+		<host.url>localhost</host.url>
+		<jdbc.username>root</jdbc.username>
+		<jdbc.password></jdbc.password>
+		<jdbc.url>jdbc:mysql://${host.url}:3306/${jdbc.database.name}</jdbc.url>
+		<cdbi.jdbc.url>jdbc:mysql://${host.url}:3306/mysql</cdbi.jdbc.url>
+		<jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>${jdbc.driver.groupId}</groupId>
+			<artifactId>${jdbc.driver.artifactId}</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<!-- ant插件 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	<profiles>
+		<!--重建数据库 -->
+		<profile>
+			<id>create-db</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.kuali.maven.plugins</groupId>
+						<artifactId>sql-maven-plugin</artifactId>
+						<version>1.8</version>
+
+						<dependencies>
+							<!-- specify the dependent jdbc driver here -->
+							<dependency>
+								<groupId>${jdbc.driver.groupId}</groupId>
+								<artifactId>${jdbc.driver.artifactId}</artifactId>
+								<version>${jdbc.driver.version}</version>
+							</dependency>
+						</dependencies>
+
+						<!-- common configuration shared by all executions -->
+						<configuration>
+							<driver>${jdbc.driver}</driver>
+							<url>${cdbi.jdbc.url}</url>
+							<username>${jdbc.username}</username>
+							<password>${jdbc.password}</password>
+							<keepFormat>true</keepFormat>
+							<printResultSet>false</printResultSet>
+							<autocommit>true</autocommit>
+							<!-- You can comment out username/password configurations and have maven to look them up in your settings.xml using 
+								${settingsKey} -->
+							<settingsKey>sensibleKey</settingsKey>
+							<!--all executions are ignored if -Dmaven.test.skip=true -->
+							<skip>false</skip>
+						</configuration>
+
+						<executions>
+							<execution>
+								<id>drop-db-before-test-if-any</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<configuration>
+									<!-- need another database to drop the targeted one -->
+									<url>${cdbi.jdbc.url}</url>
+									<autocommit>true</autocommit>
+									<sqlCommand>drop database ${jdbc.database.name}</sqlCommand>
+									<!-- ignore error when database is not avaiable -->
+									<onError>continue</onError>
+								</configuration>
+							</execution>
+
+							<execution>
+								<id>create-db</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>execute</goal>
+								</goals>
+								<configuration>
+									<url>${cdbi.jdbc.url}</url>
+									<!-- no transaction -->
+									<autocommit>true</autocommit>
+									<sqlCommand>create database ${jdbc.database.name} CHARACTER SET utf8 COLLATE utf8_bin</sqlCommand>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<!-- 建表及初始化表数据 -->
+		<profile>
+			<id>init-db</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-antrun-plugin</artifactId>
+						<executions>
+							<execution>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>run</goal>
+								</goals>
+								<configuration>
+									<target>
+										<!-- <property file="src/main/resources/application.properties" /> -->
+										<sql driver="${jdbc.driver}" url="${jdbc.url}" userid="${jdbc.username}" password="${jdbc.password}"
+											src="src/main/resources/data/init.sql" onerror="stop" encoding="utf-8">
+											<classpath refid="maven.test.classpath" />
+										</sql>
+										<sql driver="${jdbc.driver}" url="${jdbc.url}" userid="${jdbc.username}" password="${jdbc.password}"
+											src="src/test/resources/data/init-test.sql" onerror="stop" encoding="utf-8">
+											<classpath refid="maven.test.classpath" />
+										</sql>
+									</target>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>
