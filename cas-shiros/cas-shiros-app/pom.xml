@@ -10,26 +10,38 @@
 	<packaging>war</packaging>
 	<name>CAS Shiro demo : application</name>
 	<description>CAS Shiro demo : application</description>
+	<properties>
+		<shiro.version>1.2.2</shiro.version>
+		<spring.version>3.2.3.RELEASE</spring.version>
+		<aspectjrt.version>1.7.3</aspectjrt.version>
+		<slf4j.version>1.7.5</slf4j.version>
+	</properties>
 	<dependencies>
+		<!--CAS Shiro start -->
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-cas</artifactId>
-			<version>1.2.2</version>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>${shiro.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.6.4</version>
+			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
-			<version>1.6.4</version>
+			<version>${slf4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
-			<version>1.4</version>
+			<version>1.8</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opensaml</groupId>
@@ -41,6 +53,54 @@
 			<artifactId>xmlsec</artifactId>
 			<version>1.4.3</version>
 		</dependency>
+		<!--CAS Shiro end -->
+
+		<!-- SPRING start -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>2.2</version>
+		</dependency>
+		<!-- SPRING end -->
+		<!-- AOP begin -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>${aspectjrt.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectjrt.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- AOP end -->
 	</dependencies>
 	<build>
 		<finalName>${project.artifactId}</finalName>
@@ -54,20 +114,20 @@
 				<artifactId>maven-eclipse-plugin</artifactId>
 			</plugin>
 			<plugin>
-					<groupId>org.mortbay.jetty</groupId>
-					<artifactId>jetty-maven-plugin</artifactId>
-					<version>8.1.11.v20130520</version>
-					<configuration>
-						<webApp>
-							<contextPath>/app</contextPath>
-						</webApp>
-						<contextHandlers>
-							<contextHandler implementation="org.eclipse.jetty.webapp.WebAppContext">
-								<war>${basedir}/../cas-shiros-server/target/cas-shiros-server.war</war>
-								<contextPath>/cas</contextPath>
-							</contextHandler>
-						</contextHandlers>
-					</configuration>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>8.1.11.v20130520</version>
+				<configuration>
+					<webApp>
+						<contextPath>/app</contextPath>
+					</webApp>
+					<contextHandlers>
+						<contextHandler implementation="org.eclipse.jetty.webapp.WebAppContext">
+							<war>${basedir}/../cas-shiros-server/target/cas-shiros-server.war</war>
+							<contextPath>/cas</contextPath>
+						</contextHandler>
+					</contextHandlers>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
