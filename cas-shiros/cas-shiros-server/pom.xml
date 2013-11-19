@@ -11,8 +11,46 @@
     <description>CAS Shiro demo : CAS server</description>
     <properties>
         <cas.version>3.5.2</cas.version>
+        <tomcat-jdbc.version>7.0.42</tomcat-jdbc.version>
     </properties>
     <dependencies>
+    	<dependency>
+		  <groupId>javax.validation</groupId>
+		  <artifactId>validation-api</artifactId>
+		  <version>1.1.0.Final</version>
+		  <scope>compile</scope>
+		</dependency>
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>3.1.1.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+		  <groupId>org.jasig.cas</groupId>
+		  <artifactId>cas-server-core</artifactId>
+		  <version>${cas.version}</version>
+		  <scope>compile</scope>
+		</dependency>
+    	<!-- database && pool -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-jdbc</artifactId>
+			<version>${tomcat-jdbc.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>${jdbc.driver.groupId}</groupId>
+			<artifactId>${jdbc.driver.artifactId}</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		
+    	<dependency>
+		  <groupId>org.jasig.cas</groupId>
+		  <artifactId>cas-server-support-jdbc</artifactId>
+		  <version>${cas.version}</version>
+		  <scope>runtime</scope>
+		</dependency>
         <dependency>
             <groupId>org.jasig.cas</groupId>
             <artifactId>cas-server-webapp</artifactId>
