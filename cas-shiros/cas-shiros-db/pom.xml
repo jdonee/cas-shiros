@@ -10,16 +10,6 @@
 	<packaging>jar</packaging>
 	<name>CAS Shiro Database Scripts</name>
 	<description>CAS Shiro Database Scripts</description>
-	<properties>
-		<sql.type>mysql</sql.type>
-		<jdbc.database.name>casdemo</jdbc.database.name>
-		<host.url>localhost</host.url>
-		<jdbc.username>root</jdbc.username>
-		<jdbc.password></jdbc.password>
-		<jdbc.url>jdbc:mysql://${host.url}:3306/${jdbc.database.name}</jdbc.url>
-		<cdbi.jdbc.url>jdbc:mysql://${host.url}:3306/mysql</cdbi.jdbc.url>
-		<jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
-	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>${jdbc.driver.groupId}</groupId>
