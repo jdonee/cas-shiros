@@ -21,9 +21,13 @@ echo [Step 3] Start cas-client projects.
 cd ..\cas-shiros-app
 start "cas-client1" %MVN% clean jetty:run -Djetty.port=8080
 if errorlevel 1 goto error
+cd ..\cas-shiros-app-admin
+start "cas-client2" %MVN% clean jetty:run -Djetty.port=8082
+if errorlevel 1 goto error
 
 echo [INFO] Please wait a moment. When you see "[INFO] Started Jetty Server" in both 2 popup consoles, you can access below demo sites:
 echo [INFO] http://localhost:8080/app
+echo [INFO] http://localhost:8082/app-admin
 
 goto end
 :error

@@ -62,6 +62,7 @@
 	</build>
 	<modules>
 		<module>cas-shiros-app</module>
+		<module>cas-shiros-app-admin</module>
 		<module>cas-shiros-server</module>
 		<module>cas-shiros-db</module>
 	</modules>
