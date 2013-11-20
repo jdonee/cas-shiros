@@ -13,6 +13,13 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.6</jdk.version>	
 		
+		<!-- dependency的版本定义 -->
+		<shiro.version>1.2.2</shiro.version>
+		<spring.version>3.2.3.RELEASE</spring.version>
+		<aspectjrt.version>1.7.3</aspectjrt.version>
+		<slf4j.version>1.7.5</slf4j.version>
+		
+		<!-- 其它定义 -->
 		<jdbc.driver.groupId>mysql</jdbc.driver.groupId>
 		<jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
 		<jdbc.driver.version>5.1.25</jdbc.driver.version>
@@ -24,6 +31,7 @@
 		<jdbc.url>jdbc:mysql://${host.url}:3306/${jdbc.database.name}</jdbc.url>
 		<cdbi.jdbc.url>jdbc:mysql://${host.url}:3306/mysql</cdbi.jdbc.url>
 		<jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
+		<cas.host>http://localhost:8080/cas</cas.host>
 	</properties>
 	<dependencyManagement>
 		<dependencies>

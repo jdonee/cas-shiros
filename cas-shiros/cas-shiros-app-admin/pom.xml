@@ -10,12 +10,7 @@
 	<packaging>war</packaging>
 	<name>CAS Shiro admin demo : application</name>
 	<description>CAS Shiro admin demo : application</description>
-	<properties>
-		<shiro.version>1.2.2</shiro.version>
-		<spring.version>3.2.3.RELEASE</spring.version>
-		<aspectjrt.version>1.7.3</aspectjrt.version>
-		<slf4j.version>1.7.5</slf4j.version>
-	</properties>
+
 	<dependencies>
 		<!--CAS Shiro start -->
 		<dependency>
@@ -104,6 +99,12 @@
 	</dependencies>
 	<build>
 		<finalName>${project.artifactId}</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory><!-- 开启资源过滤 -->
+				<filtering>true</filtering>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
