@@ -9,6 +9,10 @@
 			classpath:shiro-config.xml
 		</param-value>
 	</context-param>
+	<context-param name="profiles">
+		<param-name>spring.profiles.default</param-name>
+		<param-value>development</param-value>
+	</context-param>
     
     <!-- 类加载监听器 -->
     <listener>

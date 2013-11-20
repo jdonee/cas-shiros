@@ -31,7 +31,7 @@
 		<jdbc.url>jdbc:mysql://${host.url}:3306/${jdbc.database.name}</jdbc.url>
 		<cdbi.jdbc.url>jdbc:mysql://${host.url}:3306/mysql</cdbi.jdbc.url>
 		<jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
-		<cas.host>http://localhost:8080/cas</cas.host>
+		<cas.host>http://localhost:8080/cas/</cas.host>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
