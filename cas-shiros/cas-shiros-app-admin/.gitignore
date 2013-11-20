@@ -4,5 +4,3 @@
 target/
 test-output/
 bin/
-/cas.log
-/perfStats.log
