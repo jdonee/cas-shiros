@@ -1,38 +1,45 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.jdonee</groupId>
-        <artifactId>cas-shiros</artifactId>
-        <version>1.0.0</version>
-    </parent>
-    <artifactId>cas-shiros-server</artifactId>
-    <packaging>war</packaging>
-    <name>CAS Shiro demo : CAS server</name>
-    <description>CAS Shiro demo : CAS server</description>
-    <properties>
-        <cas.version>3.5.2</cas.version>
-        <tomcat-jdbc.version>7.0.42</tomcat-jdbc.version>
-    </properties>
-    <dependencies>
-    	<dependency>
-		  <groupId>javax.validation</groupId>
-		  <artifactId>validation-api</artifactId>
-		  <version>1.1.0.Final</version>
-		  <scope>compile</scope>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.jdonee</groupId>
+		<artifactId>cas-shiros</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	<artifactId>cas-shiros-server</artifactId>
+	<packaging>war</packaging>
+	<name>CAS Shiro demo : CAS server</name>
+	<description>CAS Shiro demo : CAS server</description>
+	<properties>
+		<cas.version>3.5.2</cas.version>
+		<tomcat-jdbc.version>7.0.42</tomcat-jdbc.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.1.0.Final</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-            <version>3.1.1.RELEASE</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-		  <groupId>org.jasig.cas</groupId>
-		  <artifactId>cas-server-core</artifactId>
-		  <version>${cas.version}</version>
-		  <scope>compile</scope>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>3.1.1.RELEASE</version>
+			<scope>compile</scope>
 		</dependency>
-    	<!-- database && pool -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jasig.cas</groupId>
+			<artifactId>cas-server-core</artifactId>
+			<version>${cas.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- database && pool -->
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-jdbc</artifactId>
@@ -44,39 +51,39 @@
 			<artifactId>${jdbc.driver.artifactId}</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		
-    	<dependency>
-		  <groupId>org.jasig.cas</groupId>
-		  <artifactId>cas-server-support-jdbc</artifactId>
-		  <version>${cas.version}</version>
-		  <scope>runtime</scope>
+
+		<dependency>
+			<groupId>org.jasig.cas</groupId>
+			<artifactId>cas-server-support-jdbc</artifactId>
+			<version>${cas.version}</version>
+			<scope>runtime</scope>
 		</dependency>
-        <dependency>
-            <groupId>org.jasig.cas</groupId>
-            <artifactId>cas-server-webapp</artifactId>
-            <version>${cas.version}</version>
-            <type>war</type>
-            <scope>runtime</scope>
-        </dependency>
-    </dependencies>
-    <build>
-        <finalName>${project.artifactId}</finalName>
-        <resources>
+		<dependency>
+			<groupId>org.jasig.cas</groupId>
+			<artifactId>cas-server-webapp</artifactId>
+			<version>${cas.version}</version>
+			<type>war</type>
+			<scope>runtime</scope>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>${project.artifactId}</finalName>
+		<resources>
 			<resource>
 				<directory>src/main/resources</directory><!-- 开启资源过滤 -->
 				<filtering>true</filtering>
 			</resource>
 		</resources>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-eclipse-plugin</artifactId>
-            </plugin>
-            <!-- war插件 -->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+			</plugin>
+			<!-- war插件 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -99,6 +106,6 @@
 					</execution>
 				</executions>
 			</plugin>
-        </plugins>
-    </build>
+		</plugins>
+	</build>
 </project>
