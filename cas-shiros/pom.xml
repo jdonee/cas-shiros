@@ -69,6 +69,7 @@
 		</pluginManagement>
 	</build>
 	<modules>
+		<module>cas-shiros-parent</module>
 		<module>cas-shiros-app</module>
 		<module>cas-shiros-app-admin</module>
 		<module>cas-shiros-server</module>
