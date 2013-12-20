@@ -18,4 +18,4 @@ h2. Manual deployment
 You can also deploy manually these three web applications in your favorite web applications server :
 - cas-shiros-app on http://localhost:8080/app
 - cas-shiros-server on http://localhost:8080/cas
-- cas-shiros-app-admin on http://localhost:8082/app-amdin
+- cas-shiros-app-admin on http://localhost:8080/app-amdin
