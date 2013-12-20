@@ -127,6 +127,10 @@
 							<war>${basedir}/../cas-shiros-server/target/cas-shiros-server.war</war>
 							<contextPath>/cas</contextPath>
 						</contextHandler>
+						<contextHandler implementation="org.eclipse.jetty.webapp.WebAppContext">
+							<war>${basedir}/../cas-shiros-app-admin/target/cas-shiros-app-admin.war</war>
+							<contextPath>/app-admin</contextPath>
+						</contextHandler>
 					</contextHandlers>
 				</configuration>
 			</plugin>
