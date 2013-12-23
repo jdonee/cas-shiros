@@ -1,0 +1,10 @@
+<!--?xml version="1.0" encoding="utf-8" ?-->
+<portable-config>
+
+  <!-- 应用配置-->
+  <config-file path="WEB-INF/classes/applation.properties">
+  		<replace key="cas.host">http://passport.app.com</replace>
+  		<replace key="my.host">http://www.myapp-admin.com</replace>
+  </config-file>
+
+</portable-config>

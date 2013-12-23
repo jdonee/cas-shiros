@@ -13,7 +13,7 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">  
         <property name="securityManager" ref="securityManager"/>  
         <!-- 设定角色的登录链接，这里为cas登录页面的链接可配置回调地址  -->  
-        <property name="loginUrl" value="${cas.host}login?service=http://localhost:8080/app/shiro-cas" />
+        <property name="loginUrl" value="${cas.host}/login?service=${my.host}/shiro-cas" />
         <property name="filters">  
             <util:map>  
                 <!-- 添加casFilter到shiroFilter -->  
@@ -39,7 +39,7 @@
         <property name="defaultRoles" value="ROLE_USER"/>       
         <property name="casServerUrlPrefix" value="${cas.host}"/>  
         <!-- 客户端的回调地址设置，必须和下面的shiro-cas过滤器拦截的地址一致 -->  
-        <property name="casService" value="http://localhost:8080/app/shiro-cas"/>  
+        <property name="casService" value="${my.host}/shiro-cas"/>  
     </bean>  
       
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">      

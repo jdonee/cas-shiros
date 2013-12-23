@@ -125,4 +125,46 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>proc</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<property>
+					<name>env</name>
+					<value>proc</value>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<!-- 参数配置插件 -->
+						<groupId>com.juvenxu.portable-config-maven-plugin</groupId>
+						<artifactId>portable-config-maven-plugin</artifactId>
+						<version>1.1.5</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>replace-package</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<portableConfig>src/main/portable/proc.xml</portableConfig>
+						</configuration>
+					</plugin>
+					<!-- war打包插件, 设定war包名称不带版本号 -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-war-plugin</artifactId>
+						<version>2.4</version>
+						<configuration>
+							<warName>${project.artifactId}</warName>
+							<packagingExcludes>**/log4jdbc-log4j2-jdbc4-1.15.jar,**/log4jdbc.log4j2.properties,**/rebel.xml</packagingExcludes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
