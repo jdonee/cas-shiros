@@ -20,12 +20,17 @@ if errorlevel 1 goto error
 
 echo [Step 3] Start cas-client projects.
 
+cd ..\cas-shiros-dependency-infrastructure
+call %MVN% clean install -Dmaven.test.skip=true
+if errorlevel 1 goto error
+
 cd ..\cas-shiros-app-admin
 call %MVN% clean install -Dmaven.test.skip=true
 if errorlevel 1 goto error
 
 cd ..\cas-shiros-app
 start "cas-client" %MVN% clean jetty:run -Djetty.port=8080
+cd ..
 if errorlevel 1 goto error
 
 
