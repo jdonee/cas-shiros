@@ -7,18 +7,18 @@
 	<packaging>pom</packaging>
 	<name>CAS Shiro demo</name>
 	<description>CAS Shiro demo</description>
-	
+
 	<properties>
 		<!-- Plugin的属性定义 -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jdk.version>1.6</jdk.version>	
-		
+		<jdk.version>1.6</jdk.version>
+
 		<!-- dependency的版本定义 -->
 		<shiro.version>1.2.2</shiro.version>
 		<spring.version>3.2.3.RELEASE</spring.version>
 		<aspectjrt.version>1.7.3</aspectjrt.version>
 		<slf4j.version>1.7.5</slf4j.version>
-		
+
 		<!-- 其它定义 -->
 		<jdbc.driver.groupId>mysql</jdbc.driver.groupId>
 		<jdbc.driver.artifactId>mysql-connector-java</jdbc.driver.artifactId>
@@ -27,20 +27,20 @@
 		<jdbc.database.name>casdemo</jdbc.database.name>
 		<host.url>localhost</host.url>
 		<jdbc.username>root</jdbc.username>
-		<jdbc.password></jdbc.password>
+		<jdbc.password>root</jdbc.password>
 		<jdbc.url>jdbc:mysql://${host.url}:3306/${jdbc.database.name}</jdbc.url>
 		<cdbi.jdbc.url>jdbc:mysql://${host.url}:3306/mysql</cdbi.jdbc.url>
 		<jdbc.driver>com.mysql.jdbc.Driver</jdbc.driver>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
-		<!-- jdbc driver -->
-		<dependency>
-			<groupId>${jdbc.driver.groupId}</groupId>
-			<artifactId>${jdbc.driver.artifactId}</artifactId>
-			<version>${jdbc.driver.version}</version>
-			<scope>test</scope>
-		</dependency>
+			<!-- jdbc driver -->
+			<dependency>
+				<groupId>${jdbc.driver.groupId}</groupId>
+				<artifactId>${jdbc.driver.artifactId}</artifactId>
+				<version>${jdbc.driver.version}</version>
+				<scope>test</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<build>
@@ -63,9 +63,14 @@
 					<configuration>
 						<sourceExcludes>
 							<sourceExclude>**/.svn/**</sourceExclude>
-         				</sourceExcludes>
+						</sourceExcludes>
 						<wtpversion>2.0</wtpversion>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.mortbay.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<version>8.1.14.v20131031</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
