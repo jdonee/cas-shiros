@@ -11,8 +11,8 @@
 	<name>CAS Shiro demo : CAS server</name>
 	<description>CAS Shiro demo : CAS server</description>
 	<properties>
-		<cas.version>3.5.2</cas.version>
-		<tomcat-jdbc.version>7.0.42</tomcat-jdbc.version>
+		<cas.version>3.5.2.1</cas.version>
+		<tomcat-jdbc.version>7.0.54</tomcat-jdbc.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -24,7 +24,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>3.1.1.RELEASE</version>
+			<version>3.2.6.RELEASE</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
